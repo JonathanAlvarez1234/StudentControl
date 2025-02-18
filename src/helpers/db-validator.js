@@ -1,4 +1,13 @@
+import Role from '../role/role.model.js';
 import Usuario from '../users/user.model.js';
+
+export const existeUsuarioById = async (id = "") => {
+    const existeUsuario = await Usuario.findById(id);
+    console.log("Id")
+    if(!existeUsuario){
+        throw new Error(`El Id ${id} no existe`);
+    }
+}
 
 export const existenteEmail = async (correo = '') => {
     const existeEmail = await Usuario.findOne({correo});
@@ -8,10 +17,10 @@ export const existenteEmail = async (correo = '') => {
     }
 }
 
-export const existeUsuarioById = async (id = "") => {
-    const existeUsuario = await Usuario.findById(id);
-    console.log("Id")
-    if(!existeUsuario){
-        throw new Error(`El Id ${id} no existe`);
+export const esRoleValido = async (role = "") => {
+    const existeRol = await Role.findOne({role});
+
+    if(!existeRol){
+        throw new Error(`El Rol ${role} No Existe Dentro De La Data Base`);
     }
 }

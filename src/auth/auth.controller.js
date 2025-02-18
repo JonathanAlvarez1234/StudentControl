@@ -8,7 +8,6 @@ export const login = async (req, res) => {
 
     try {
 
-
         const user = await Usuario.findOne({
             $or: [{email},{username}]
         })
@@ -43,7 +42,6 @@ export const login = async (req, res) => {
             }
         })
 
-        
     } catch (error) {
         console.log(e);
         res.status(500).json({
@@ -56,11 +54,9 @@ export const login = async (req, res) => {
 export const register  = async (req, res) => {
     try {
         const data = req.body;
-
         let profile_picture = req.file ? req.file.filename : null;
 
         const encryptedPassword = await hash(data.password);
-
         const user = await Usuario.create({
             name: data.name,
             surname: data.surname,

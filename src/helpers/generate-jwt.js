@@ -12,7 +12,7 @@ export const generarJWT = (uid = '') => {
                 expiresIn: '1h'
             },
             (err, token)=>{
-                err ? (console.log(err), reject("El Token No Se Ha Generado")) : resolve(token);
+                err ? (console.log(err), reject("El token no se ha generado")) : resolve(token);
             }
         );
        }); 
