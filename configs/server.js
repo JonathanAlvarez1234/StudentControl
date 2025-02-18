@@ -8,7 +8,7 @@ import { dbConnection } from './mongo.js';
 import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from "../src/users/user.routes.js"
-//import courseRoutes from "../src/courses/course.controller.js"
+import cursosRoutes from "../src/cursos/cursos.controller.js"
 
 const configurarMiddlewares = (app) => {
     app.use(express.urlencoded({extended: false}));
@@ -20,23 +20,23 @@ const configurarMiddlewares = (app) => {
 }
 
 const configurarRutas = (app) =>{
-        app.use("/academicSystem/v1/auth", authRoutes);
-        app.use("/academicSystem/v1/users", userRoutes);
-        //app.use("/academicSystem/v1/courses", courseRoutes);
+        app.use("/StudentControl/v1/auth", authRoutes);
+        app.use("/StudentControl/v1/users", userRoutes);
+        app.use("/StudentControl/v1/cursos", cursosRoutes);
 }
 
 const conectarDB = async () => {
     try {
         await dbConnection();
-        console.log("Conexion Exitosa Con La Base De Datos");
+        console.log("Conexion exitosa con la Base de Datos");
     } catch (error) {
-        console.log("Error Al Conectar Con La Base De Datos", error);
+        console.log("Error al conectar con la Base de Datos", error);
     }
 }
 
 export const iniciarServidor = async () => {
     const app = express();
-    const port = process.env.PORT || 3000;
+    const port = process.env.PORT || 3001;
 
     await conectarDB();
     configurarMiddlewares(app);
