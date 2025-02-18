@@ -34,13 +34,12 @@ router.delete(
     "/:id",
     [
         validarJWT,
-        tieneRole("TEACHER_ROLE" , "VENTAS_ROLE"),
+        tieneRole("TEACHER_ROLE"),
         check("id", "No es un ID válido").isMongoId(),
         check("id").custom(existeUsuarioById),
         validarCampos
     ],
     deleteUser
 )
-
 
 export default router;

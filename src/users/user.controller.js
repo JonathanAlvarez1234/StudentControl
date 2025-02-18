@@ -7,7 +7,6 @@ export const getUsers = async(req = request, res = response) => {
         const{limite = 10, desde = 0} = req.query;
 
         const query = {state : true}
-
         const[total, users] = await Promise.all([
             User.countDocuments(query),
             User.find(query)
@@ -24,7 +23,7 @@ export const getUsers = async(req = request, res = response) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: "Error Al Obtener Usuario",
+            message: "Error al obtener usuario!",
             error
         })
     }
@@ -37,7 +36,7 @@ export const getUserById = async (req, res) => {
         if(!user){
             return res.status(404).json({
                 success: false,
-                msg: "Usuario Not Found"
+                msg: "Usuario no encontrado"
             })
         }
 
@@ -48,7 +47,7 @@ export const getUserById = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success:false,
-            msg: "Error Al Obtener Usuario",
+            msg: "Error al obtener usuario!",
             error
         })
     }
@@ -67,14 +66,14 @@ export const updateUser = async(req, res = response) => {
 
         res.status(200).json({
             success: true,
-            msg: "Usuario Actualizado!",
+            msg: "Usuario actualizado!",
             user
         })
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error Al Actualizar User",
+            msg: "Error al actualizar usuario!",
             error
         })
     }
@@ -98,7 +97,7 @@ export const deleteUser = async (req, res)=>{
         } catch (error) {
             res.status(500).json({
                 succes:false,
-                msg:'Error al Desactivar El Usuario',
+                msg:'Error al desactivar el usuario!',
                 error  
                 })
 }
