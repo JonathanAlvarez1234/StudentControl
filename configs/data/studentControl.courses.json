@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "67c40a5a5ed24c98c94c67c8"
+  },
+  "name": "Matemáticas",
+  "keeper": {
+    "$oid": "67c3c9cfc11f749364a16b39"
+  },
+  "description": "Un curso sobre las ciencias exactas",
+  "state": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c40b175ed24c98c94c67cd"
+  },
+  "name": "Taller",
+  "keeper": {
+    "$oid": "67c3c97fc11f749364a16b36"
+  },
+  "description": "Un area donde podras desarrollar tus habilidades",
+  "state": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c40c2d5ed24c98c94c67d5"
+  },
+  "name": "Fisica Fundamental",
+  "keeper": {
+    "$oid": "67c3c97fc11f749364a16b36"
+  },
+  "description": "Curso que estudia las leyes que rige el universo",
+  "students": {
+    "$oid": "67c3c8b1c11f749364a16b30"
+  },
+  "state": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c4e38c4dc75ba6c04945fc"
+  },
+  "name": "Expresión Artistica",
+  "keeper": {
+    "$oid": "67c3c97fc11f749364a16b36"
+  },
+  "description": "Desarrolla tu creatividad",
+  "state": true,
+  "__v": 0
+}]

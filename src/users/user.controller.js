@@ -5,7 +5,6 @@ import User from "./user.model.js";
 export const getUsers = async(req = request, res = response) => {
     try {
         const{limite = 10, desde = 0} = req.query;
-
         const query = {state : true}
         const[total, users] = await Promise.all([
             User.countDocuments(query),
@@ -13,17 +12,15 @@ export const getUsers = async(req = request, res = response) => {
             .skip(Number(desde))
             .limit(Number(limite))
         ])
-
         res.status(200).json({
             succes: true,
             total,
             users
         })
-        
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: "Error al obtener usuario!",
+            msg: "Error al obtener usuario!",
             error
         })
     }
@@ -39,7 +36,6 @@ export const getUserById = async (req, res) => {
                 msg: "Usuario no encontrado"
             })
         }
-
         res.status(200).json({
             success: true,
             user
@@ -47,7 +43,7 @@ export const getUserById = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success:false,
-            msg: "Error al obtener usuario!",
+            msg: "Error al obtener usuario",
             error
         })
     }
@@ -57,19 +53,15 @@ export const updateUser = async(req, res = response) => {
     try {
         const {id} = req.params;
         const {_id, password, email, ...data} = req.body;
-
         if(password){
             data.password = await hash(password)
         }
-
         const user = await User.findByIdAndUpdate(id, data, {new: true});
-
         res.status(200).json({
             success: true,
             msg: "Usuario actualizado!",
             user
         })
-
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -83,7 +75,6 @@ export const deleteUser = async (req, res)=>{
     try {
         const { id } = req.params
         const user = await User.findByIdAndUpdate(id,{state: false}, {new:true});
-        
         const authenticatedUser = req.user
         res.status(200).json({
             succes: true,
@@ -91,9 +82,6 @@ export const deleteUser = async (req, res)=>{
             user,
             authenticatedUser
         })
-
-
-
         } catch (error) {
             res.status(500).json({
                 succes:false,

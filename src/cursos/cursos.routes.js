@@ -1,10 +1,13 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import {saveCourse, getCourse, searchCourse, deleteCourse, updateCourse} from "./cursos.controller.js";
-import {validarCampos} from "../middlewares/validar-campos.js";
-import {validarJWT} from "../middlewares/validar-jwt.js";
+import { saveCourse, getCourse, assignCourseStudent, deleteCourse, updateCourse } from "./cursos.controller.js";
+import { validarCampos } from "../middlewares/validar-campos.js";
+import { tieneRole } from "../middlewares/validar-roles.js";
+import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
+
+router.get("/", getCourse)
 
 router.post(
     "/",
@@ -16,23 +19,19 @@ router.post(
     saveCourse
 )
 
-router.post("/assign-course", assignCourseToStudent);
-
-router.get("/", getCourse)
-
-router.get(
-    "/:id",
+router.post(
+    "/assignCourse/",
     [
-        validarJWT,
-        check("id", "No es un ID válido").isMongoId(),
-        validarCampos
+        validarJWT
     ],
-    searchCourse
-)
+    assignCourseStudent);
 
 router.put(
     "/:id",
     [
+        validarJWT,
+        tieneRole("TEACHER_ROLE"),
+        check("id", "No es un ID válido").isMongoId(),
         validarCampos
     ],
     updateCourse

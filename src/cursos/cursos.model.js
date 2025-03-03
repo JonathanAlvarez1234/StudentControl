@@ -1,24 +1,24 @@
-import {Schema, Model} from "mongoose";
+import {Schema, model} from "mongoose";
 
 const CursosSchema = new Schema({
     name: {
         type: String,
-        required: [true, "El Nombre Es Obligatorio"]
-    },
-    description: {
-        type: String,
-        required: [true, "La Descripcion Es Obligatoria"]
+        required: [true, "El nombre es necesario"]
     },
     keeper:{
         type: Schema.Types.ObjectId,
         ref: "user",
         required: true
     },
+    description: {
+        type: String,
+        required: [true, "La descripción es necesaria"]
+    },
     students: { 
-        type: mongoose.Schema.Types.ObjectId, 
+        type: Schema.Types.ObjectId, 
         ref: "user" 
     },
-    status: {
+    state: {
         type: Boolean,
         default: true
     }
@@ -30,4 +30,4 @@ CursosSchema.methods.toJSON = function() {
     return usuario;
 }
 
-export default Model("Course", CursosSchema);
+export default model("Course", CursosSchema);

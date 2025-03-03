@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "386c4027-dac7-403c-bde5-45a27a21e1d6",
+		"name": "User-AlumProf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37557519"
+	},
+	"item": [
+		{
+			"name": "Get",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Juan\",\r\n    \"surname\":\"Monterroso\",\r\n    \"username\":\"JuanDavid\",\r\n    \"email\":\"jmonterroso@gmail.com\",\r\n    \"password\":\"12345679\",\r\n    \"role\":\"TEACHER_ROLE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/studentControl/v1/users/67c3c8b1c11f749364a16b30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"studentControl",
+						"v1",
+						"users",
+						"67c3c8b1c11f749364a16b30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/studentControl/v1/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"studentControl",
+						"v1",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzYzk3ZmMxMWY3NDkzNjRhMTZiMzYiLCJpYXQiOjE3NDA5NTY2NTMsImV4cCI6MTc0MDk2MDI1M30.JhvdEtPbjRmn3a-cxeJmnKpMfOyDjdKSbSnxHeith8o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/studentControl/v1/users/67c3c81081f7128d81295feb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"studentControl",
+						"v1",
+						"users",
+						"67c3c81081f7128d81295feb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

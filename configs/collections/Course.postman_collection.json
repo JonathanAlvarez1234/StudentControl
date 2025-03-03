@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "cd73cf00-4730-434b-8dcb-350a028d4b1c",
+		"name": "Course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37557519"
+	},
+	"item": [
+		{
+			"name": "Agregar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzYzk3ZmMxMWY3NDkzNjRhMTZiMzYiLCJpYXQiOjE3NDA5MDExMjEsImV4cCI6MTc0MDkwNDcyMX0.CEkKwmFZvvZBBldsp4PwhlR9kwfY5R9s_5udodkY5p8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Fisica Fundamental\",\r\n    \"email\":\"cduarte@gmail.com\",\r\n    \"description\":\"Curso que estudia las leyes que rige el universo\",\r\n    \"students\":\"67c3c8b1c11f749364a16b30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/studentControl/v1/cursos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"studentControl",
+						"v1",
+						"cursos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzYzkyZWMxMWY3NDkzNjRhMTZiMzMiLCJpYXQiOjE3NDA5NTYxNzksImV4cCI6MTc0MDk1OTc3OX0.vNU9TpL9KlM_YP59nh853qjcSUk6uoI3et-kmBzmkso",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\":\"67c3c92ec11f749364a16b33\",\r\n    \"courseId\":\"67c4e38c4dc75ba6c04945fc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/studentControl/v1/cursos/assignCourse/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"studentControl",
+						"v1",
+						"cursos",
+						"assignCourse",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

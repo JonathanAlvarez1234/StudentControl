@@ -3,28 +3,27 @@ import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "El nombre es obligatorio"]
+        required: [true, "El nombre es necesario"]
     },
     surname: {
         type: String,
-        required: [true, "El apellido es obligatorio"]
+        required: [true, "El apellido es necesario"]
     },
     username: {
         type: String,
-        required: [true, "El nombre de usuario es obligatorio"]
+        required: [true, "El nombre de usuario es necesario"]
     },
     email:{
         type: String,
-        required: [true, "El correo es obligatorio"],
+        required: [true, "El correo es necesario"],
         unique: true
     },
     password: {
         type: String,
-        required: [true, "La contraseña es obligatoria"]
+        required: [true, "La contraseña es necesario"]
     },
     role: {
         type: String,
-        required: [true, "El rol es obligatorio"],
         enum: ["TEACHER_ROLE","STUDENT_ROLE"],
         default: "STUDENT_ROLE"
     },

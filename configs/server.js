@@ -8,9 +8,9 @@ import { dbConnection } from './mongo.js';
 import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from "../src/users/user.routes.js"
-import cursosRoutes from "../src/cursos/cursos.controller.js"
+import cursosRoutes from "../src/cursos/cursos.routes.js"
 
-const configurarMiddlewares = (app) => {
+const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}));
     app.use(cors());
     app.use(express.json());
@@ -19,30 +19,31 @@ const configurarMiddlewares = (app) => {
     app.use(limiter);
 }
 
-const configurarRutas = (app) =>{
-        app.use("/StudentControl/v1/auth", authRoutes);
-        app.use("/StudentControl/v1/users", userRoutes);
-        app.use("/StudentControl/v1/cursos", cursosRoutes);
+const routes = (app) =>{
+        app.use("/studentControl/v1/auth", authRoutes);
+        app.use("/studentControl/v1/users", userRoutes);
+        app.use("/studentControl/v1/cursos", cursosRoutes);
 }
 
 const conectarDB = async () => {
     try {
         await dbConnection();
-        console.log("Conexion exitosa con la Base de Datos");
+        console.log("Successful connection to the database");
     } catch (error) {
-        console.log("Error al conectar con la Base de Datos", error);
+        console.log("Error connecting to the database", error);
     }
 }
 
-export const iniciarServidor = async () => {
+export const initServer = async () => {
     const app = express();
     const port = process.env.PORT || 3001;
-
-    await conectarDB();
-    configurarMiddlewares(app);
-    configurarRutas(app);
-
-    app.listen(port, () => {
-        console.log(`Server Running On Port ${port}`);
-    });
+    try {
+        middlewares(app);
+        conectarDB();
+        routes(app);
+        app.listen(port);
+        console.log(`Server running on port: ${port}`);
+    } catch (err) {
+        console.log(`Server init failed: ${err}`);
+    }
 }
